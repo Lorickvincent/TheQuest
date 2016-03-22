@@ -25,5 +25,33 @@ namespace WpfApplication1.Controls
             InitializeComponent();
 
         }
+
+        public void MoveDown()
+        {
+            var row = Grid.GetRow(image);
+            Grid.SetRow(image, row + 1);
+        }
+
+        public void MoveUp()
+        {
+            var row = Grid.GetRow(image);
+            Grid.SetRow(image, row - 1);
+        }
+
+        public void MoveLeft()
+        {
+
+            Grid.SetColumn(image, Grid.GetColumn(image)-1);
+        }
+        public void MoveRight()
+        {
+
+            Grid.SetColumn(image, Grid.GetColumn(image) + 1);
+        }
+
+        private void mainGrid_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }

@@ -13,6 +13,13 @@ namespace WpfApplication1
     {
 
         private static GameEngine _gameEngine;
+
+        public MainMenuUserControl MainMenu
+        {
+            get { return (MainMenuUserControl)RootGrid.Children.Cast<FrameworkElement>().FirstOrDefault(o => o.Name == "MainMenu"); }
+        }
+        public GameBoardUserControl GameBoard { get { return (GameBoardUserControl)RootGrid.Children.Cast<FrameworkElement>().FirstOrDefault(o => o.Name == "GameBoard"); } }
+
         public static GameEngine GetInstance()
         {
             if (_gameEngine == null)
@@ -81,6 +88,8 @@ namespace WpfApplication1
             if (gameBoard != null)
                 gameBoard.Visibility = Visibility.Hidden;
         }
+
+
     }
 
     

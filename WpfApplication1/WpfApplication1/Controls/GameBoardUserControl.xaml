@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Border BorderBrush="Black" BorderThickness="2">
-        <Grid x:Name="mainGrid">
+        <Grid x:Name="mainGrid" KeyUp="mainGrid_KeyUp">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -24,6 +24,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            <Image x:Name="image" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="2" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/3428489.png" />
         </Grid>
     </Border>
 </UserControl>

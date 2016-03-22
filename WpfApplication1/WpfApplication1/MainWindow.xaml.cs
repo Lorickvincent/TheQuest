@@ -39,6 +39,16 @@ namespace WpfApplication1
         {
             if (e.Key == Key.Escape)
                 GameEngine.GetInstance().ShowMainMenu();
+            else if (e.Key == Key.Left || e.Key == Key.Q)
+                GameEngine.GetInstance().GameBoard.MoveLeft();
+            else if (e.Key == Key.Right || e.Key == Key.D)
+                GameEngine.GetInstance().GameBoard.MoveRight();
+            else if (e.Key == Key.Up || e.Key == Key.Z)
+                GameEngine.GetInstance().GameBoard.MoveUp();
+            else if (e.Key == Key.Down || e.Key == Key.S)
+                GameEngine.GetInstance().GameBoard.MoveDown();
+
+
         }
     }
 }
