@@ -5,10 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="238,127,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="417,78,0,0" VerticalAlignment="Top" Width="75"/>
-
-    </Grid>
+        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded" KeyUp="Window_KeyUp">
+    <Grid Name="rootGrid"/>
 </Window>
