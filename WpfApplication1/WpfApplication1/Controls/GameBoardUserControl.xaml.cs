@@ -24,30 +24,64 @@ namespace WpfApplication1.Controls
         {
             InitializeComponent();
 
+            for (int i = 0; i < mainGrid.ColumnDefinitions.Count; i++)
+            {
+                for (int j = 0; j < mainGrid.RowDefinitions.Count; j++)
+                {
+
+                    var imguri = new Uri("/WpfApplication1;Component/Images/SlotRing.png", UriKind.Relative);
+                    BitmapImage ni = new BitmapImage(imguri);
+                    Image img = new Image();
+                    img.Source = ni;
+                    Grid.SetColumn(img, i);
+                    Grid.SetRow(img, j);
+                    img.Width = 54;
+                    img.Height = 54;
+                    mainGrid.Children.Add(img);
+
+                }
+            }
+
+            Canvas.SetZIndex(image, 1);
+
         }
 
         public void MoveDown()
         {
-            var row = Grid.GetRow(image);
-            Grid.SetRow(image, row + 1);
+            if (Grid.GetRow(image) < mainGrid.RowDefinitions.Count - 1)
+                Grid.SetRow(image, Grid.GetRow(image) + 1);
         }
 
         public void MoveUp()
         {
             var row = Grid.GetRow(image);
-            Grid.SetRow(image, row - 1);
+            if (row > 0)
+                Grid.SetRow(image, row - 1);
         }
 
         public void MoveLeft()
         {
-
-            Grid.SetColumn(image, Grid.GetColumn(image)-1);
+            if (Grid.GetColumn(image) > 0)
+                Grid.SetColumn(image, Grid.GetColumn(image)-1);
         }
         public void MoveRight()
         {
-
-            Grid.SetColumn(image, Grid.GetColumn(image) + 1);
+            if (Grid.GetColumn(image) < mainGrid.ColumnDefinitions.Count -1)
+                Grid.SetColumn(image, Grid.GetColumn(image) + 1);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void mainGrid_KeyUp(object sender, KeyEventArgs e)
         {

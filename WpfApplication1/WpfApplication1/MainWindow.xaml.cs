@@ -29,7 +29,7 @@ namespace WpfApplication1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            GameEngine.GetInstance().RootGrid = rootGrid;
+            GameEngine.GetInstance().RootCanvas = rootCanvas;
             GameEngine.GetInstance().ShowMainMenu();
 
 
@@ -39,7 +39,14 @@ namespace WpfApplication1
         {
             if (e.Key == Key.Escape)
                 GameEngine.GetInstance().ShowMainMenu();
-            else if (e.Key == Key.Left || e.Key == Key.Q)
+            else if (e.Key == Key.P)
+                GameEngine.GetInstance().ToggleCharacterSheet();
+
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Left || e.Key == Key.Q)
                 GameEngine.GetInstance().GameBoard.MoveLeft();
             else if (e.Key == Key.Right || e.Key == Key.D)
                 GameEngine.GetInstance().GameBoard.MoveRight();
@@ -47,9 +54,6 @@ namespace WpfApplication1
                 GameEngine.GetInstance().GameBoard.MoveUp();
             else if (e.Key == Key.Down || e.Key == Key.S)
                 GameEngine.GetInstance().GameBoard.MoveDown();
-            else if (e.Key == Key.P)
-                GameEngine.GetInstance().ShowCharacterSheet();
-
         }
     }
 }
