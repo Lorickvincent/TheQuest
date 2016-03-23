@@ -34,14 +34,15 @@ namespace WpfApplication1
         public int Rows { get; set; }
         public int Columns { get; set; }
 
+        public GameBoardBlock[,] GameBoardBlocks { get; set; }
 
 
         public GameEngine()
         {
             Rows = 9;
             Columns = 11;
+            GameBoardBlocks = new GameBoardBlock[Columns, Rows];
         }
-
 
         /// <summary>
         /// Permet d'afficher le menu principal
@@ -146,5 +147,17 @@ namespace WpfApplication1
         }
     }
 
-    
+
+    public enum GameBoardBlockTypes
+    {
+        Grass = 0,
+        Wall = 1,
+        Door = 2
+    }
+
+    public class GameBoardBlock
+    {
+        public GameBoardBlockTypes Type { get; set; }
+    }
+
 }
