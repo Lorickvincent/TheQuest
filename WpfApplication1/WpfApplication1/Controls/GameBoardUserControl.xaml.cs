@@ -29,7 +29,7 @@ namespace WpfApplication1.Controls
                 for (int j = 0; j < mainGrid.RowDefinitions.Count; j++)
                 {
 
-                    var imguri = new Uri("/WpfApplication1;Component/Images/SlotRing.png", UriKind.Relative);
+                    var imguri = new Uri("/WpfApplication1;Component/Images/Background/Grass.jpg", UriKind.Relative);
                     BitmapImage ni = new BitmapImage(imguri);
                     Image img = new Image();
                     img.Source = ni;
