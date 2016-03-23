@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="WpfApplication1.Controls.CharacterUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApplication1.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="275" Width="275">
+    <Border BorderBrush="White" BorderThickness="2">
+    <Grid Background="Black">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="54" />
+            <ColumnDefinition Width="54" />
+            <ColumnDefinition Width="54" />
+            <ColumnDefinition Width="54" />
+            <ColumnDefinition Width="54" />          
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="54" />
+            <RowDefinition Height="54" />
+            <RowDefinition Height="54" />
+            <RowDefinition Height="54" />
+            <RowDefinition Height="54" />
+        </Grid.RowDefinitions>
+
+            <Image x:Name="slotHelmet" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <Image x:Name="slotChest" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <Image x:Name="slotLegs" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <Image x:Name="slotShoes" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
+            <Image x:Name="perso" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+            <Image x:Name="slotAmulet" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <Image x:Name="slotRing1" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <Image x:Name="slotRing2" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <Image x:Name="slotRing3" Grid.Row="3" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
+            <Image x:Name="slotWeaponLeft" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <Image x:Name="slotWeaponRight" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
+
+        </Grid>
+        
+        
+        
+        
+    </Border>
+</UserControl>

@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\CharacterUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\GameBoardUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -70,6 +74,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\CharacterUserControl.xaml.cs">
+      <DependentUpon>CharacterUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\GameBoardUserControl.xaml.cs">
       <DependentUpon>GameBoardUserControl.xaml</DependentUpon>
@@ -112,6 +119,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\3428489.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\inventoryexslots.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
