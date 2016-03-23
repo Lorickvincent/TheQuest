@@ -89,7 +89,34 @@ namespace WpfApplication1
                 gameBoard.Visibility = Visibility.Hidden;
         }
 
+        public void ShowCharacterSheet()
+        {
 
+            HideMainMenu();
+            HideBoardGame();
+
+            CharacterUserControl control = (CharacterUserControl)RootGrid.Children.Cast<FrameworkElement>().FirstOrDefault(o => o.Name == "CharacterSheet");
+            if (control == null)
+            {
+                control = new CharacterUserControl();
+                control.Name = "CharacterSheet";
+                control.HorizontalAlignment = HorizontalAlignment.Stretch;
+                control.VerticalAlignment = VerticalAlignment.Stretch;
+                control.Width = RootGrid.ActualWidth;
+                control.Height = RootGrid.ActualHeight;
+                RootGrid.Children.Add(control);
+                Canvas.SetLeft(control, 0);
+                Canvas.SetTop(control, 0);
+            }
+            control.Visibility = Visibility.Visible;
+        }
+
+        public void HideCharacterSheet()
+        {
+            CharacterUserControl control = (CharacterUserControl)RootGrid.Children.Cast<FrameworkElement>().FirstOrDefault(o => o.Name == "GameBoard");
+            if (control != null)
+                control.Visibility = Visibility.Hidden;
+        }
     }
 
     

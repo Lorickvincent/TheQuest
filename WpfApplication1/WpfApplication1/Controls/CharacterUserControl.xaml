@@ -5,9 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApplication1.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="275" Width="275">
-    <Border BorderBrush="White" BorderThickness="2">
-    <Grid Background="Black">
+             d:DesignHeight="350" Width="350">
+        <Grid Background="Black" Width="275" Height="275" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="54" />
             <ColumnDefinition Width="54" />
@@ -38,11 +37,6 @@
             <Image x:Name="slotWeaponLeft" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/SlotEmpty.png" />
             <Image x:Name="slotWeaponRight" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/SlotEmpty.png" />
 
-
         </Grid>
-        
-        
-        
-        
-    </Border>
+       
 </UserControl>

@@ -47,7 +47,8 @@ namespace WpfApplication1
                 GameEngine.GetInstance().GameBoard.MoveUp();
             else if (e.Key == Key.Down || e.Key == Key.S)
                 GameEngine.GetInstance().GameBoard.MoveDown();
-
+            else if (e.Key == Key.P)
+                GameEngine.GetInstance().ShowCharacterSheet();
 
         }
     }
