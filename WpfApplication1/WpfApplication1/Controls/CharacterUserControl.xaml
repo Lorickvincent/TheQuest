@@ -23,20 +23,20 @@
             <RowDefinition Height="54" />
         </Grid.RowDefinitions>
 
-            <Image x:Name="slotHelmet" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-            <Image x:Name="slotChest" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-            <Image x:Name="slotLegs" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-            <Image x:Name="slotShoes" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <Image x:Name="slotHelmet" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/Slot Casque.png" />
+            <Image x:Name="slotChest" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/SlotChestplate.png" />
+            <Image x:Name="slotLegs" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/SlotLegs.png" />
+            <Image x:Name="slotShoes" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/SlotShoes.png" />
 
             <Image x:Name="perso" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
-            <Image x:Name="slotAmulet" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-            <Image x:Name="slotRing1" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-            <Image x:Name="slotRing2" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-            <Image x:Name="slotRing3" Grid.Row="3" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <Image x:Name="slotAmulet" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/SlotAmulet.png" />
+            <Image x:Name="slotRing1" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/SlotRing.png" />
+            <Image x:Name="slotRing2" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/SlotRing.png" />
+            <Image x:Name="slotRing3" Grid.Row="3" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/SlotRing.png" />
 
-            <Image x:Name="slotWeaponLeft" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-            <Image x:Name="slotWeaponRight" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <Image x:Name="slotWeaponLeft" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/SlotEmpty.png" />
+            <Image x:Name="slotWeaponRight" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/SlotEmpty.png" />
 
 
         </Grid>
