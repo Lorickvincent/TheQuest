@@ -5,6 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded" KeyUp="Window_KeyUp" KeyDown="Window_KeyDown">
+        Title="MainWindow" Height="540" Width="640" Loaded="Window_Loaded" KeyUp="Window_KeyUp" KeyDown="Window_KeyDown">
     <Canvas Name="rootCanvas"/>
 </Window>

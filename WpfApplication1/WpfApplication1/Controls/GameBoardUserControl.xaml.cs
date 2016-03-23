@@ -24,12 +24,18 @@ namespace WpfApplication1.Controls
         {
             InitializeComponent();
 
-            for (int i = 0; i < mainGrid.ColumnDefinitions.Count; i++)
+            for (int i = 0; i < mainGrid.ColumnDefinitions.Count-1; i++)
             {
-                for (int j = 0; j < mainGrid.RowDefinitions.Count; j++)
+                for (int j = 0; j < mainGrid.RowDefinitions.Count-1; j++)
                 {
+                    bool isBorder = (i == 0 || i == mainGrid.ColumnDefinitions.Count - 1) || (j == 0 || j == mainGrid.RowDefinitions.Count - 1);
 
-                    var imguri = new Uri("/WpfApplication1;Component/Images/Background/Grass.jpg", UriKind.Relative);
+                    Uri imguri;
+                    if (isBorder)
+                        imguri = new Uri("/WpfApplication1;Component/Images/Background/Grass.jpg", UriKind.Relative);
+                    else
+                        imguri = new Uri("/WpfApplication1;Component/Images/Background/Grass.jpg", UriKind.Relative);
+
                     BitmapImage ni = new BitmapImage(imguri);
                     Image img = new Image();
                     img.Source = ni;

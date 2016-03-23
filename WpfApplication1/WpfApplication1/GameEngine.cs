@@ -29,6 +29,20 @@ namespace WpfApplication1
 
         public Canvas RootCanvas { get; set; }
 
+
+
+        public int Rows { get; set; }
+        public int Columns { get; set; }
+
+
+
+        public GameEngine()
+        {
+            Rows = 9;
+            Columns = 11;
+        }
+
+
         /// <summary>
         /// Permet d'afficher le menu principal
         /// </summary>

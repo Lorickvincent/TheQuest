@@ -5,26 +5,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApplication1.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="500">
-        <Grid x:Name="mainGrid" KeyUp="mainGrid_KeyUp" Height="324" Width="432">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="54" />
-                <ColumnDefinition Width="54" />
-                <ColumnDefinition Width="54" />
-                <ColumnDefinition Width="54" />
-                <ColumnDefinition Width="54" />
-                <ColumnDefinition Width="54" />
-                <ColumnDefinition Width="54" />
-                <ColumnDefinition Width="54" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="54" />
-                <RowDefinition Height="54" />
-                <RowDefinition Height="54" />
-                <RowDefinition Height="54" />
-                <RowDefinition Height="54" />
-                <RowDefinition Height="54" />
-            </Grid.RowDefinitions>
-            <Image x:Name="image" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="2" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/3428489.png" />
-        </Grid>
+             d:DesignHeight="486" d:DesignWidth="594">
+    <Grid x:Name="mainGrid" KeyUp="mainGrid_KeyUp" Height="486" Width="594">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="54" />
+            <ColumnDefinition Width="54" />
+            <ColumnDefinition Width="54" />
+            <ColumnDefinition Width="54" />
+            <ColumnDefinition Width="54" />
+            <ColumnDefinition Width="54" />
+            <ColumnDefinition Width="54" />
+            <ColumnDefinition Width="54" />
+            <ColumnDefinition Width="54" />
+            <ColumnDefinition Width="54" />
+            <ColumnDefinition Width="54" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="54" />
+            <RowDefinition Height="54" />
+            <RowDefinition Height="54" />
+            <RowDefinition Height="54" />
+            <RowDefinition Height="54" />
+            <RowDefinition Height="54" />
+            <RowDefinition Height="54" />
+            <RowDefinition Height="54" />
+            <RowDefinition Height="54" />
+        </Grid.RowDefinitions>
+        <Image x:Name="image" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="2" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/3428489.png" />
+    </Grid>
 </UserControl>
