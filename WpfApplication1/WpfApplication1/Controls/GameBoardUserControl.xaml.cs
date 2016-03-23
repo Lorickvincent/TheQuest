@@ -24,15 +24,15 @@ namespace WpfApplication1.Controls
         {
             InitializeComponent();
 
-            for (int i = 0; i < mainGrid.ColumnDefinitions.Count-1; i++)
+            for (int i = 0; i < mainGrid.ColumnDefinitions.Count; i++)
             {
-                for (int j = 0; j < mainGrid.RowDefinitions.Count-1; j++)
+                for (int j = 0; j < mainGrid.RowDefinitions.Count; j++)
                 {
                     bool isBorder = (i == 0 || i == mainGrid.ColumnDefinitions.Count - 1) || (j == 0 || j == mainGrid.RowDefinitions.Count - 1);
 
                     Uri imguri;
                     if (isBorder)
-                        imguri = new Uri("/WpfApplication1;Component/Images/Background/Grass.jpg", UriKind.Relative);
+                        imguri = new Uri("/WpfApplication1;Component/Images/Background/Wall1.jpg", UriKind.Relative);
                     else
                         imguri = new Uri("/WpfApplication1;Component/Images/Background/Grass.jpg", UriKind.Relative);
 
