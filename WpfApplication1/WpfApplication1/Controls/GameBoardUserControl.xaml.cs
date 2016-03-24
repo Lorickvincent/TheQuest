@@ -25,31 +25,16 @@ namespace WpfApplication1.Controls
         {
             InitializeComponent();
 
-            for (int i = 0; i < mainGrid.ColumnDefinitions.Count; i++)
+            for (int x = 0; x < mainGrid.ColumnDefinitions.Count; x++)
             {
-                for (int j = 0; j < mainGrid.RowDefinitions.Count; j++)
+                for (int y = 0; y < mainGrid.RowDefinitions.Count; y++)
                 {
-                    bool isBorder = (i == 0 || i == mainGrid.ColumnDefinitions.Count - 1) || (j == 0 || j == mainGrid.RowDefinitions.Count - 1);
 
-                    Uri imguri;
-                    if (isBorder)
-                    {
-                        imguri = new Uri("/WpfApplication1;Component/Images/Background/Wall1.jpg", UriKind.Relative);
-                        GameEngine.GetInstance().GameBoardBlocks[i, j] = new GameBoardBlock() { Type = GameBoardBlockTypes.Wall };
-                    }
-                    else
-                    {
-                        imguri = new Uri("/WpfApplication1;Component/Images/Background/SolDonjon.jpg", UriKind.Relative);
-                        GameEngine.GetInstance().GameBoardBlocks[i, j] = new GameBoardBlock() { Type = GameBoardBlockTypes.Grass };
-                    }
-
-
-
-                    BitmapImage ni = new BitmapImage(imguri);
+                    BitmapImage ni = new BitmapImage(GameEngine.GetInstance().GetCurrentRoom().RoomBlocks[x,y].BackgroundImage);
                     Image img = new Image();
                     img.Source = ni;
-                    Grid.SetColumn(img, i);
-                    Grid.SetRow(img, j);
+                    Grid.SetColumn(img, x);
+                    Grid.SetRow(img, y);
                     img.Width = 54;
                     img.Height = 54;
                     mainGrid.Children.Add(img);
@@ -64,7 +49,7 @@ namespace WpfApplication1.Controls
         public void MoveDown()
         {
             if (Grid.GetRow(image) < mainGrid.RowDefinitions.Count - 1)
-                if (GameEngine.GetInstance().GameBoardBlocks[Grid.GetColumn(image), Grid.GetRow(image) + 1].Type != GameBoardBlockTypes.Wall)
+                if (GameEngine.GetInstance().GetCurrentRoom().RoomBlocks[Grid.GetColumn(image), Grid.GetRow(image) + 1].Type != RoomBlockTypes.Wall)
                     Grid.SetRow(image, Grid.GetRow(image) + 1);
 
         }
@@ -72,7 +57,7 @@ namespace WpfApplication1.Controls
         public void MoveUp()
         {
              if (Grid.GetRow(image) > 0)
-                if (GameEngine.GetInstance().GameBoardBlocks[Grid.GetColumn(image), Grid.GetRow(image) - 1].Type != GameBoardBlockTypes.Wall)
+                if (GameEngine.GetInstance().GetCurrentRoom().RoomBlocks[Grid.GetColumn(image), Grid.GetRow(image) - 1].Type != RoomBlockTypes.Wall)
                     Grid.SetRow(image, Grid.GetRow(image) - 1);
 
         }
@@ -80,14 +65,14 @@ namespace WpfApplication1.Controls
         public void MoveLeft()
         {
             if (Grid.GetColumn(image) > 0)
-                if (GameEngine.GetInstance().GameBoardBlocks[Grid.GetColumn(image)-1, Grid.GetRow(image)].Type != GameBoardBlockTypes.Wall)
+                if (GameEngine.GetInstance().GetCurrentRoom().RoomBlocks[Grid.GetColumn(image)-1, Grid.GetRow(image)].Type != RoomBlockTypes.Wall)
                     Grid.SetColumn(image, Grid.GetColumn(image) - 1);
 
         }
         public void MoveRight()
         {
             if (Grid.GetColumn(image) < mainGrid.ColumnDefinitions.Count - 1)
-                if (GameEngine.GetInstance().GameBoardBlocks[Grid.GetColumn(image)+1, Grid.GetRow(image) ].Type != GameBoardBlockTypes.Wall)
+                if (GameEngine.GetInstance().GetCurrentRoom().RoomBlocks[Grid.GetColumn(image)+1, Grid.GetRow(image) ].Type != RoomBlockTypes.Wall)
                     Grid.SetColumn(image, Grid.GetColumn(image) + 1);
 
         }

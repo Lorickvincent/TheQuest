@@ -31,17 +31,24 @@ namespace WpfApplication1
 
 
 
-        public int Rows { get; set; }
-        public int Columns { get; set; }
+        public Dictionary<string, Room> Rooms { get; set; }
+        public string CurrentRoomKey { get; set; }
 
-        public GameBoardBlock[,] GameBoardBlocks { get; set; }
-
+        public Room GetCurrentRoom()
+        {
+            return Rooms[CurrentRoomKey];
+        }
 
         public GameEngine()
         {
-            Rows = 9;
-            Columns = 11;
-            GameBoardBlocks = new GameBoardBlock[Columns, Rows];
+            Rooms = new Dictionary<string, Room>();
+
+            var room = Room.CreateRoom(11, 9);
+            room.AddDoor(new Door() { IsOpen = true, X = 0, Y = 3 });
+            room.AddDoor(new Door() { IsOpen = false, X = 10, Y = 5 });
+
+            Rooms.Add("entrance", room);
+            CurrentRoomKey = "entrance";
         }
 
         /// <summary>
@@ -148,16 +155,6 @@ namespace WpfApplication1
     }
 
 
-    public enum GameBoardBlockTypes
-    {
-        Grass = 0,
-        Wall = 1,
-        Door = 2
-    }
 
-    public class GameBoardBlock
-    {
-        public GameBoardBlockTypes Type { get; set; }
-    }
 
 }
