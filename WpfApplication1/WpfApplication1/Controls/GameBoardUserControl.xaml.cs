@@ -39,7 +39,7 @@ namespace WpfApplication1.Controls
                     }
                     else
                     {
-                        imguri = new Uri("/WpfApplication1;Component/Images/Background/Grass.jpg", UriKind.Relative);
+                        imguri = new Uri("/WpfApplication1;Component/Images/Background/SolDonjon.jpg", UriKind.Relative);
                         GameEngine.GetInstance().GameBoardBlocks[i, j] = new GameBoardBlock() { Type = GameBoardBlockTypes.Grass };
                     }
 

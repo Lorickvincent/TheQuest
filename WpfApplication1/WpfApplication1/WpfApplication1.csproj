@@ -138,6 +138,24 @@
   <ItemGroup>
     <Resource Include="Images\Background\Wall1.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Hero.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Hero %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\LeatherArmorNoWeaponsFace.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\SolDonjon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\WallDoorClosed.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\WallDoorOpen.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

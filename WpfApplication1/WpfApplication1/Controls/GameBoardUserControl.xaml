@@ -31,6 +31,6 @@
             <RowDefinition Height="54" />
             <RowDefinition Height="54" />
         </Grid.RowDefinitions>
-        <Image x:Name="image" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="2" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/3428489.png" />
+        <Image x:Name="image" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="2" VerticalAlignment="Stretch" Source="/WpfApplication1;component/Images/LeatherArmorNoWeaponsFace.PNG" />
     </Grid>
 </UserControl>
