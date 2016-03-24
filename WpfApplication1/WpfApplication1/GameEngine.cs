@@ -44,8 +44,10 @@ namespace WpfApplication1
             Rooms = new Dictionary<string, Room>();
 
             var room = Room.CreateRoom(11, 9);
-            room.AddDoor(new Door() { IsOpen = true, X = 0, Y = 3 });
-            room.AddDoor(new Door() { IsOpen = false, X = 10, Y = 5 });
+            room.AddDoor(new Door() { IsOpen = true, X = 0, Y = 4 });
+            room.AddDoor(new Door() { IsOpen = false, X = 10, Y = 4 });
+            room.AddDoor(new Door() { IsOpen = false, X = 5, Y = 0 });
+            room.AddDoor(new Door() { IsOpen = false, X = 5, Y = 8 });
 
             Rooms.Add("entrance", room);
             CurrentRoomKey = "entrance";
