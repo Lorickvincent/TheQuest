@@ -47,7 +47,6 @@ namespace WpfApplication1
 
         public Position CharacterPosition { get; set; }
 
-
         public GameEngine()
         {
             //Rooms = new Dictionary<string, Room>();
@@ -62,10 +61,8 @@ namespace WpfApplication1
             //CurrentRoomKey = "entrance";
         }
 
-
         public void StartNewGame()
         {
-
 
             CurrentRoomPosition = new Position() { X = 0, Y = 0 };
             CharacterPosition = new Position() { X = 5, Y = 4 };
@@ -74,7 +71,9 @@ namespace WpfApplication1
         }
 
 
-        public void LoadFile(string fileName)
+
+
+        public void LoadLevel(string fileName)
         {
             try
             {   // Open the text file using a stream reader.
@@ -211,7 +210,6 @@ namespace WpfApplication1
 
         }
 
-
         public void DrawCurrentRoom()
         {
             for (int x = 0; x < MainGrid.ColumnDefinitions.Count; x++)
@@ -239,7 +237,6 @@ namespace WpfApplication1
             Grid.SetRow(CharacterSprite, CharacterPosition.Y);
             Grid.SetColumn(CharacterSprite, CharacterPosition.X);
         }
-
 
         public void CheckPosition()
         {
@@ -296,6 +293,7 @@ namespace WpfApplication1
                 }
 
         }
+
         public void MoveRight()
         {
             if (Grid.GetColumn(CharacterSprite) < MainGrid.ColumnDefinitions.Count - 1)
@@ -306,8 +304,6 @@ namespace WpfApplication1
                 }
 
         }
-
-
 
 
         /// <summary>

@@ -25,6 +25,7 @@ namespace WpfApplication1
         public Door Door{ get; set; }
     }
 
+
     public class Room
     {
 
@@ -37,27 +38,40 @@ namespace WpfApplication1
             Room room = new Room();
             room.RoomBlocks = new RoomBlock[columns, rows];
 
+            // définition de toutes les images de sol possible
+            List<Uri> groundPictures = new List<Uri>();
+            groundPictures.Add(new Uri("/WpfApplication1;Component/Images/Background/SolDonjon.jpg", UriKind.Relative));
+            groundPictures.Add(new Uri("/WpfApplication1;Component/Images/Background/Grass.jpg", UriKind.Relative));
+
+            // choix aléatoire du sol
+
+            Random rnd = new Random();
+            int xxx = rnd.Next(0, groundPictures.Count);
+
+            Uri groundPicture = groundPictures[xxx];
+
             for (int x = 0; x < columns; x++)
             {
                 for (int y = 0; y < rows; y++)
                 {
                     bool isBorder = (x == 0 || x == columns - 1) || (y == 0 || y == rows - 1);
+                    RoomBlock block = new RoomBlock();
+
 
                     if (isBorder)
                     {
-                        room.RoomBlocks[x, y] = new RoomBlock()
-                        {
-                            Type = RoomBlockTypes.Wall,
-                            BackgroundImage = new Uri("/WpfApplication1;Component/Images/Background/Wall1.jpg", UriKind.Relative)
-                        };
+
+                        block.Type = RoomBlockTypes.Wall;
+                        block.BackgroundImage = new Uri("/WpfApplication1;Component/Images/Background/Wall1.jpg", UriKind.Relative);
+                        room.RoomBlocks[x, y] = block;
                     }
                     else
                     {
-                        room.RoomBlocks[x, y] = new RoomBlock()
-                        {
-                            Type = RoomBlockTypes.Ground,
-                            BackgroundImage = new Uri("/WpfApplication1;Component/Images/Background/SolDonjon.jpg", UriKind.Relative)
-                        };
+                        
+                        block.Type = RoomBlockTypes.Ground;
+                        block.BackgroundImage = groundPicture;
+                        room.RoomBlocks[x, y] = block;
+
                     }
                 }
 

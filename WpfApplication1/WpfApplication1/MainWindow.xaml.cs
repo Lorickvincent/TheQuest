@@ -32,7 +32,7 @@ namespace WpfApplication1
             GameEngine.GetInstance().RootCanvas = rootCanvas;
             GameEngine.GetInstance().ShowMainMenu();
 
-            GameEngine.GetInstance().LoadFile(@"..\..\Levels\Level1.csv");
+            GameEngine.GetInstance().LoadLevel(@"..\..\Levels\Level1.csv");
         }
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
