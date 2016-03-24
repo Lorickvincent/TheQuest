@@ -44,9 +44,7 @@ namespace WpfApplication1
             groundPictures.Add(new Uri("/WpfApplication1;Component/Images/Background/Grass.jpg", UriKind.Relative));
 
             // choix aléatoire du sol
-
-            Random rnd = new Random();
-            int xxx = rnd.Next(0, groundPictures.Count);
+            int xxx = GameEngine.GenerateRandomNumber(groundPictures.Count);
 
             Uri groundPicture = groundPictures[xxx];
 
@@ -93,6 +91,9 @@ namespace WpfApplication1
             block.Door = door;
             RoomBlocks[door.X, door.Y] = block;
         }
+
+
+
     }
 
     public class Position
