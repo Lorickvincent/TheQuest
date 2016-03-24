@@ -28,7 +28,7 @@ namespace WpfApplication1.Controls
 
         private void buttonStart_Click(object sender, RoutedEventArgs e)
         {
-            GameEngine.GetInstance().ShowBoardGame();
+            GameEngine.GetInstance().StartNewGame();
         }
 
         private void buttonExit_Click(object sender, RoutedEventArgs e)

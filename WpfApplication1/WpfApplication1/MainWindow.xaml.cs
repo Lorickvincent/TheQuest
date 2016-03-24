@@ -32,7 +32,7 @@ namespace WpfApplication1
             GameEngine.GetInstance().RootCanvas = rootCanvas;
             GameEngine.GetInstance().ShowMainMenu();
 
-
+            GameEngine.GetInstance().LoadFile(@"..\..\Levels\Level1.csv");
         }
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
@@ -47,13 +47,13 @@ namespace WpfApplication1
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Left || e.Key == Key.Q)
-                GameEngine.GetInstance().GameBoard.MoveLeft();
+                GameEngine.GetInstance().MoveLeft();
             else if (e.Key == Key.Right || e.Key == Key.D)
-                GameEngine.GetInstance().GameBoard.MoveRight();
+                GameEngine.GetInstance().MoveRight();
             else if (e.Key == Key.Up || e.Key == Key.Z)
-                GameEngine.GetInstance().GameBoard.MoveUp();
+                GameEngine.GetInstance().MoveUp();
             else if (e.Key == Key.Down || e.Key == Key.S)
-                GameEngine.GetInstance().GameBoard.MoveDown();
+                GameEngine.GetInstance().MoveDown();
         }
     }
 }

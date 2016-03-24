@@ -21,10 +21,14 @@ namespace WpfApplication1
         /// </summary>
         public RoomBlockTypes Type { get; set; }
         public Uri BackgroundImage { get; set; }
+
+        public Door Door{ get; set; }
     }
 
     public class Room
     {
+
+        public Position Position { get; set; }
 
         public RoomBlock[,] RoomBlocks { get; set; }
 
@@ -72,11 +76,17 @@ namespace WpfApplication1
             else
                 block.BackgroundImage = new Uri("/WpfApplication1;Component/Images/Background/WallDoorClosed.jpg", UriKind.Relative);
 
+            block.Door = door;
             RoomBlocks[door.X, door.Y] = block;
         }
     }
 
+    public class Position
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
 
+    }
 
 
 
