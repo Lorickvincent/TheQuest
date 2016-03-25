@@ -71,17 +71,7 @@ namespace WpfApplication1
             }
 
             
-            // ajout un mob aléatoirement
-            if (GameEngine.GenerateRandomNumber(5) != 1)
-            {
 
-                var mob = new Mob();
-                mob.Position.X = 2 + GameEngine.GenerateRandomNumber(columns - 4);
-                mob.Position.Y = 2 + GameEngine.GenerateRandomNumber(rows - 4);
-                mob.Sprite = GameEngine.GetInstance().MobSprites.ElementAt(GameEngine.GenerateRandomNumber(GameEngine.GetInstance().MobSprites.Count)).Value; 
-
-                room.AddMob(mob);
-            }
 
 
             return room;

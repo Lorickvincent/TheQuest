@@ -20,12 +20,15 @@ namespace WpfApplication1
 
         private static GameEngine _gameEngine;
 
-        public MainMenuUserControl MainMenu
+        public MainMenuUserControl MainMenuControl
         {
             get { return (MainMenuUserControl)RootCanvas.Children.Cast<FrameworkElement>().FirstOrDefault(o => o.Name == "MainMenu"); }
         }
 
-        public GameBoardUserControl GameBoard { get { return (GameBoardUserControl)RootCanvas.Children.Cast<FrameworkElement>().FirstOrDefault(o => o.Name == "GameBoard"); } }
+        public GameBoardUserControl GameBoardControl {
+            get { return (GameBoardUserControl)RootCanvas.Children.Cast<FrameworkElement>().FirstOrDefault(o => o.Name == "GameBoard"); }
+        }
+
 
         public static GameEngine GetInstance()
         {
@@ -33,6 +36,7 @@ namespace WpfApplication1
         }
 
         public Canvas RootCanvas { get; set; }
+
         public Grid MainGrid { get; set; }
 
         public Level CurrentLevel { get; set; }
@@ -72,6 +76,7 @@ namespace WpfApplication1
 
             _gameEngine.RootCanvas = rootCanvas;
 
+            // ajout du UserControl du plateau de jeux
             GameBoardUserControl gameBoard = new GameBoardUserControl();
             gameBoard.Name = "GameBoard";
             gameBoard.HorizontalAlignment = HorizontalAlignment.Stretch;
@@ -89,7 +94,7 @@ namespace WpfApplication1
 
         public void StartNewGame()
         {
-            Player = new Player(this, GameBoard.playerImage);
+            Player = new Player(this, GameBoardControl.playerImage);
 
             Player.Position = new Position() { X = 5, Y = 4 };
             CurrentRoomPosition = new Position() { X = 0, Y = 0 };
@@ -153,18 +158,16 @@ namespace WpfApplication1
 
                     }
 
+                    // ajout des portes
                     for (int y = 0; y < lines.Count(); y++)
                     {
                         for (int x = 0; x < blockCount; x++)
                         {
                             var room = CurrentLevel.Rooms[x, y];
 
-
                             Room nextRoom = null;
 
                             if (room == null) continue;
-
-
 
                             // check si room à gauche
                             if (x > 0)
@@ -225,6 +228,20 @@ namespace WpfApplication1
                             }
 
 
+                            // ajout un mob aléatoirement
+                            if (GameEngine.GenerateRandomNumber(5) != 1 && x > 0 && y > 0)
+                            {
+
+                                var mob = new Mob();
+                                mob.Position.X = 2 + GameEngine.GenerateRandomNumber(blockCount - 4);
+                                mob.Position.Y = 2 + GameEngine.GenerateRandomNumber(lines.Count() - 4);
+
+                                mob.Sprite = GameEngine.GetInstance().MobSprites.ElementAt(GameEngine.GenerateRandomNumber(GameEngine.GetInstance().MobSprites.Count)).Value;
+
+                                room.AddMob(mob);
+                            }
+
+
                         }
                     }
 
@@ -242,7 +259,7 @@ namespace WpfApplication1
         public void RenderCurrentRoom()
         {
             if (GetCurrentRoom() == null) return;
-            GameBoard.mobImage.Visibility = Visibility.Hidden;
+            GameBoardControl.mobImage.Visibility = Visibility.Hidden;
 
             for (int x = 0; x < MainGrid.ColumnDefinitions.Count; x++)
             {
@@ -262,12 +279,12 @@ namespace WpfApplication1
                     if ( mob != null)
                     {
                         BitmapImage mobBitmap = new BitmapImage(mob.Sprite);
-                        GameBoard.mobImage.Source = mobBitmap;
-                        GameBoard.mobImage.Visibility = Visibility.Visible;
+                        GameBoardControl.mobImage.Source = mobBitmap;
+                        GameBoardControl.mobImage.Visibility = Visibility.Visible;
 
-                        Grid.SetColumn(GameBoard.mobImage, mob.Position.X);
-                        Grid.SetRow(GameBoard.mobImage, mob.Position.Y);
-                        Canvas.SetZIndex(GameBoard.mobImage, 1);
+                        Grid.SetColumn(GameBoardControl.mobImage, mob.Position.X);
+                        Grid.SetRow(GameBoardControl.mobImage, mob.Position.Y);
+                        Canvas.SetZIndex(GameBoardControl.mobImage, 1);
                     }
 
                 }
