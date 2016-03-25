@@ -300,6 +300,7 @@ namespace WpfApplication1
         {
 
             var block = GetCurrentRoom().RoomBlocks[Player.Position.X, Player.Position.Y];
+
             if (block.Type == RoomBlockTypes.Door && block.Door != null)
             {
                 // porte => change de pièce
@@ -308,8 +309,22 @@ namespace WpfApplication1
                 {
                     // change la room en cours
                     CurrentRoomPosition = nextRoom.Position;
+
+                    int nextX = 5;
+                    int nextY = 4;
+                    if (Player.Position.X == 0)
+                        nextX = 10;
+                    else if (Player.Position.X == 10)
+                        nextX = 0;
+
+                    if (Player.Position.Y == 0)
+                        nextY = 8;
+                    else if (Player.Position.Y == 8)
+                        nextY = 0;
+
+
                     // replace le perso
-                    Player.Move(5, 4);
+                    Player.Move(nextX, nextY);
                     // affiche la room en cours
                     RenderCurrentRoom();
                 }

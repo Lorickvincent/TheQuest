@@ -51,50 +51,55 @@ namespace WpfApplication1
 
         public void MoveDown()
         {
-            if (Grid.GetRow(Sprite) < _gameEngine.MainGrid.RowDefinitions.Count - 1 && _gameEngine.IsGameBoardVisible)
+            if (!_gameEngine.IsGameBoardVisible) return;
+            if (Grid.GetRow(Sprite) < _gameEngine.MainGrid.RowDefinitions.Count - 1)
                 if (_gameEngine.GetCurrentRoom().RoomBlocks[Grid.GetColumn(Sprite), Grid.GetRow(Sprite) + 1].Type != RoomBlockTypes.Wall)
                 {
                     Move(Position.X, ++Position.Y);
                     SetSprite(PlayerSpriteTypes.Front);
-                    _gameEngine.CheckPosition();
+                    
                 }
-
+            _gameEngine.CheckPosition();
         }
 
         public void MoveUp()
         {
-            if (Grid.GetRow(Sprite) > 0 && _gameEngine.IsGameBoardVisible)
+            if (!_gameEngine.IsGameBoardVisible) return;
+            if (Grid.GetRow(Sprite) > 0 )
                 if (_gameEngine.GetCurrentRoom().RoomBlocks[Grid.GetColumn(Sprite), Grid.GetRow(Sprite) - 1].Type != RoomBlockTypes.Wall)
                 {
                     Move(Position.X, --Position.Y);
                     SetSprite(PlayerSpriteTypes.Back);
-                    _gameEngine.CheckPosition();
+                    
                 }
+            _gameEngine.CheckPosition();
 
         }
 
         public void MoveLeft()
         {
-            if (Grid.GetColumn(Sprite) > 0 && _gameEngine.IsGameBoardVisible)
+            if (!_gameEngine.IsGameBoardVisible) return;
+            if (Grid.GetColumn(Sprite) > 0 )
                 if (_gameEngine.GetCurrentRoom().RoomBlocks[Grid.GetColumn(Sprite) - 1, Grid.GetRow(Sprite)].Type != RoomBlockTypes.Wall)
                 {
                     Move(--Position.X, Position.Y);
                     SetSprite(PlayerSpriteTypes.Left);
-                    _gameEngine.CheckPosition();
+                    
                 }
-
+            _gameEngine.CheckPosition();
         }
 
         public void MoveRight()
         {
-            if (Grid.GetColumn(Sprite) < _gameEngine.MainGrid.ColumnDefinitions.Count - 1 && _gameEngine.IsGameBoardVisible)
+            if (!_gameEngine.IsGameBoardVisible) return;
+            if (Grid.GetColumn(Sprite) < _gameEngine.MainGrid.ColumnDefinitions.Count - 1)
                 if (_gameEngine.GetCurrentRoom().RoomBlocks[Grid.GetColumn(Sprite) + 1, Grid.GetRow(Sprite)].Type != RoomBlockTypes.Wall)
                 {
                     Move(++Position.X, Position.Y);
                     SetSprite(PlayerSpriteTypes.Right);
-                    _gameEngine.CheckPosition();
+                    
                 }
-
+            _gameEngine.CheckPosition();
         }
 
     }
