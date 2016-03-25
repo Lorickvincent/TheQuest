@@ -13,7 +13,7 @@ using WpfApplication1.Controls;
 
 namespace WpfApplication1
 {
-    public class GameEngine
+    public partial class GameEngine
     {
 
         private static GameEngine _gameEngine;
@@ -22,19 +22,16 @@ namespace WpfApplication1
         {
             get { return (MainMenuUserControl)RootCanvas.Children.Cast<FrameworkElement>().FirstOrDefault(o => o.Name == "MainMenu"); }
         }
+
         public GameBoardUserControl GameBoard { get { return (GameBoardUserControl)RootCanvas.Children.Cast<FrameworkElement>().FirstOrDefault(o => o.Name == "GameBoard"); } }
 
         public static GameEngine GetInstance()
         {
-            if (_gameEngine == null)
-                _gameEngine = new GameEngine();
             return _gameEngine;
         }
 
         public Canvas RootCanvas { get; set; }
         public Grid MainGrid { get; set; }
-
-        public Image CharacterSprite { get; set; }
 
         public Level CurrentLevel { get; set; }
 
@@ -45,33 +42,45 @@ namespace WpfApplication1
             return CurrentLevel.Rooms[CurrentRoomPosition.X, CurrentRoomPosition.Y];
         }
 
-        public Position CharacterPosition { get; set; }
+        public Player Player { get; set; }
 
         public GameEngine()
         {
-            //Rooms = new Dictionary<string, Room>();
 
-            //var room = Room.CreateRoom(11, 9);
-            //room.AddDoor(new Door() { IsOpen = true, X = 0, Y = 4 });
-            //room.AddDoor(new Door() { IsOpen = false, X = 10, Y = 4 });
-            //room.AddDoor(new Door() { IsOpen = false, X = 5, Y = 0 });
-            //room.AddDoor(new Door() { IsOpen = false, X = 5, Y = 8 });
-
-            //Rooms.Add("entrance", room);
-            //CurrentRoomKey = "entrance";
         }
+
+        public static void Init(Canvas rootCanvas)
+        {
+
+            if (_gameEngine == null)
+                _gameEngine = new GameEngine();
+
+            _gameEngine.InitSprites();
+
+            _gameEngine.RootCanvas = rootCanvas;
+
+            GameBoardUserControl gameBoard = new GameBoardUserControl();
+            gameBoard.Name = "GameBoard";
+            gameBoard.HorizontalAlignment = HorizontalAlignment.Stretch;
+            gameBoard.VerticalAlignment = VerticalAlignment.Stretch;
+            gameBoard.Width = _gameEngine.RootCanvas.ActualWidth;
+            gameBoard.Height = _gameEngine.RootCanvas.ActualHeight;
+            _gameEngine.RootCanvas.Children.Add(gameBoard);
+            Canvas.SetLeft(gameBoard, 0);
+            Canvas.SetTop(gameBoard, 0);
+
+        }
+
 
         public void StartNewGame()
         {
+            Player = new Player(this, GameBoard.image);
 
+            Player.Position = new Position() { X = 5, Y = 4 };
             CurrentRoomPosition = new Position() { X = 0, Y = 0 };
-            CharacterPosition = new Position() { X = 5, Y = 4 };
             ShowBoardGame();
 
         }
-
-
-
 
         public void LoadLevel(string fileName)
         {
@@ -205,13 +214,15 @@ namespace WpfApplication1
             }
             catch (Exception e)
             {
-                MessageBox.Show("ERROR : The file could not be read:");
+                MessageBox.Show("ERROR - The file could not be read : " + e.Message);
             }
 
         }
 
         public void DrawCurrentRoom()
         {
+            if (GetCurrentRoom() == null) return;
+
             for (int x = 0; x < MainGrid.ColumnDefinitions.Count; x++)
             {
                 for (int y = 0; y < MainGrid.RowDefinitions.Count; y++)
@@ -229,19 +240,16 @@ namespace WpfApplication1
                 }
             }
 
+            Player.Move(Player.Position.X, Player.Position.Y);
+
         }
 
-        public void MoveCharacter(int x, int y)
-        {
-            CharacterPosition = new Position() { X = x, Y = y };
-            Grid.SetRow(CharacterSprite, CharacterPosition.Y);
-            Grid.SetColumn(CharacterSprite, CharacterPosition.X);
-        }
+
 
         public void CheckPosition()
         {
 
-            var block = GetCurrentRoom().RoomBlocks[CharacterPosition.X, CharacterPosition.Y];
+            var block = GetCurrentRoom().RoomBlocks[Player.Position.X, Player.Position.Y];
             if (block.Type == RoomBlockTypes.Door && block.Door != null)
             {
                 // porte => change de pièce
@@ -251,7 +259,7 @@ namespace WpfApplication1
                     // change la room en cours
                     CurrentRoomPosition = nextRoom.Position;
                     // replace le perso
-                    MoveCharacter(5, 4);
+                    Player.Move(5, 4);
                     // affiche la room en cours
                     DrawCurrentRoom();
                 }
@@ -261,49 +269,7 @@ namespace WpfApplication1
 
         }
 
-        public void MoveDown()
-        {
-            if (Grid.GetRow(CharacterSprite) < MainGrid.RowDefinitions.Count - 1)
-                if (GetCurrentRoom().RoomBlocks[Grid.GetColumn(CharacterSprite), Grid.GetRow(CharacterSprite) + 1].Type != RoomBlockTypes.Wall)
-                {
-                    MoveCharacter(CharacterPosition.X, ++CharacterPosition.Y);
-                    CheckPosition();
-                }
 
-        }
-
-        public void MoveUp()
-        {
-            if (Grid.GetRow(CharacterSprite) > 0)
-                if (GetCurrentRoom().RoomBlocks[Grid.GetColumn(CharacterSprite), Grid.GetRow(CharacterSprite) - 1].Type != RoomBlockTypes.Wall)
-                {
-                    MoveCharacter(CharacterPosition.X, --CharacterPosition.Y);
-                    CheckPosition();
-                }
-
-        }
-
-        public void MoveLeft()
-        {
-            if (Grid.GetColumn(CharacterSprite) > 0)
-                if (GetCurrentRoom().RoomBlocks[Grid.GetColumn(CharacterSprite) - 1, Grid.GetRow(CharacterSprite)].Type != RoomBlockTypes.Wall)
-                {
-                    MoveCharacter(--CharacterPosition.X,CharacterPosition.Y);
-                    CheckPosition();
-                }
-
-        }
-
-        public void MoveRight()
-        {
-            if (Grid.GetColumn(CharacterSprite) < MainGrid.ColumnDefinitions.Count - 1)
-                if (GetCurrentRoom().RoomBlocks[Grid.GetColumn(CharacterSprite) + 1, Grid.GetRow(CharacterSprite)].Type != RoomBlockTypes.Wall)
-                {
-                    MoveCharacter(++CharacterPosition.X, CharacterPosition.Y);
-                    CheckPosition();
-                }
-
-        }
 
 
         /// <summary>
@@ -340,22 +306,9 @@ namespace WpfApplication1
 
         public void ShowBoardGame()
         {
-
             HideMainMenu();
-
             GameBoardUserControl gameBoard = (GameBoardUserControl)RootCanvas.Children.Cast<FrameworkElement>().FirstOrDefault(o => o.Name == "GameBoard");
-            if (gameBoard == null)
-            {
-                gameBoard = new GameBoardUserControl();
-                gameBoard.Name = "GameBoard";
-                gameBoard.HorizontalAlignment = HorizontalAlignment.Stretch;
-                gameBoard.VerticalAlignment = VerticalAlignment.Stretch;
-                gameBoard.Width = RootCanvas.ActualWidth;
-                gameBoard.Height = RootCanvas.ActualHeight;
-                RootCanvas.Children.Add(gameBoard);
-                Canvas.SetLeft(gameBoard, 0);
-                Canvas.SetTop(gameBoard, 0);
-            }
+            GameEngine.GetInstance().DrawCurrentRoom();
             gameBoard.Visibility = Visibility.Visible;
         }
 

@@ -38,15 +38,11 @@ namespace WpfApplication1
             Room room = new Room();
             room.RoomBlocks = new RoomBlock[columns, rows];
 
-            // définition de toutes les images de sol possible
-            List<Uri> groundPictures = new List<Uri>();
-            groundPictures.Add(new Uri("/WpfApplication1;Component/Images/Background/SolDonjon.jpg", UriKind.Relative));
-            groundPictures.Add(new Uri("/WpfApplication1;Component/Images/Background/Grass.jpg", UriKind.Relative));
-
             // choix aléatoire du sol
-            int xxx = GameEngine.GenerateRandomNumber(groundPictures.Count);
+            int xxx = GameEngine.GenerateRandomNumber(GameEngine.GetInstance().GroundSprites.Count);
+            Uri groundPicture = GameEngine.GetInstance().GroundSprites.ElementAt(xxx).Value;
 
-            Uri groundPicture = groundPictures[xxx];
+
 
             for (int x = 0; x < columns; x++)
             {

@@ -24,12 +24,10 @@ namespace WpfApplication1.Controls
         public GameBoardUserControl()
         {
             InitializeComponent();
-            Canvas.SetZIndex(image, 1);
+            
 
             GameEngine.GetInstance().MainGrid = mainGrid;
-            GameEngine.GetInstance().CharacterSprite = image;
-
-            GameEngine.GetInstance().DrawCurrentRoom();
+            // GameEngine.GetInstance().DrawCurrentRoom();
 
         }
 

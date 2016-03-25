@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GameEngine_Sprites.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Door.cs" />
     <Page Include="Controls\CharacterUserControl.xaml">
       <SubType>Designer</SubType>
