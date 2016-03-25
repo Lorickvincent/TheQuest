@@ -23,6 +23,8 @@ namespace WpfApplication1
         public Uri BackgroundImage { get; set; }
 
         public Door Door{ get; set; }
+
+        public Mob Mob { get; set; }
     }
 
 
@@ -43,7 +45,6 @@ namespace WpfApplication1
             Uri groundPicture = GameEngine.GetInstance().GroundSprites.ElementAt(xxx).Value;
 
 
-
             for (int x = 0; x < columns; x++)
             {
                 for (int y = 0; y < rows; y++)
@@ -61,15 +62,28 @@ namespace WpfApplication1
                     }
                     else
                     {
-                        
                         block.Type = RoomBlockTypes.Ground;
                         block.BackgroundImage = groundPicture;
                         room.RoomBlocks[x, y] = block;
-
                     }
                 }
 
             }
+
+            
+            // ajout un mob aléatoirement
+            if (GameEngine.GenerateRandomNumber(5) != 1)
+            {
+
+                var mob = new Mob();
+                mob.Position.X = 2 + GameEngine.GenerateRandomNumber(columns - 4);
+                mob.Position.Y = 2 + GameEngine.GenerateRandomNumber(rows - 4);
+                mob.Sprite = GameEngine.GetInstance().MobSprites.ElementAt(GameEngine.GenerateRandomNumber(GameEngine.GetInstance().MobSprites.Count)).Value; 
+
+                room.AddMob(mob);
+            }
+
+
             return room;
 
         }
@@ -88,6 +102,11 @@ namespace WpfApplication1
             RoomBlocks[door.X, door.Y] = block;
         }
 
+        public void AddMob(Mob mob)
+        {
+            var block = RoomBlocks[mob.Position.X, mob.Position.Y];
+            block.Mob = mob;
+        }
 
 
     }

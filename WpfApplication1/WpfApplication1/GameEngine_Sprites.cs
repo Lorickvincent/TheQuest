@@ -11,6 +11,9 @@ namespace WpfApplication1
         public Dictionary<PlayerSpriteTypes, Uri> PlayerSprites { get; set; }
         public Dictionary<GroundSpriteTypes, Uri> GroundSprites { get; set; }
 
+        public Dictionary<MobSpriteTypes, Uri> MobSprites { get; set; }
+
+
         public void InitSprites()
         {
             PlayerSprites = new Dictionary<PlayerSpriteTypes, Uri>();
@@ -27,8 +30,24 @@ namespace WpfApplication1
             GroundSprites.Add(GroundSpriteTypes.Tiles2, new Uri("/WpfApplication1;Component/Images/Background/CarrellageBB.jpg", UriKind.Relative));
             GroundSprites.Add(GroundSpriteTypes.Tiles1, new Uri("/WpfApplication1;Component/Images/Background/CarrellageNB.jpg", UriKind.Relative));
 
+            MobSprites = new Dictionary<MobSpriteTypes, Uri>();
+
+            MobSprites.Add(MobSpriteTypes.Mob1, new Uri("/WpfApplication1;Component/Images/Hero.png", UriKind.Relative));
+            MobSprites.Add(MobSpriteTypes.Mob2, new Uri("/WpfApplication1;Component/Images/Hero.png", UriKind.Relative));
+            MobSprites.Add(MobSpriteTypes.Boss1, new Uri("/WpfApplication1;Component/Images/Hero.png", UriKind.Relative));
+            MobSprites.Add(MobSpriteTypes.Boss2, new Uri("/WpfApplication1;Component/Images/Hero.png", UriKind.Relative));
+
 
         }
+
+    }
+
+    public enum MobSpriteTypes
+    {
+        Mob1,
+        Mob2,
+        Boss1,
+        Boss2
 
     }
 

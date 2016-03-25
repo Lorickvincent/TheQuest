@@ -89,7 +89,7 @@ namespace WpfApplication1
 
         public void StartNewGame()
         {
-            Player = new Player(this, GameBoard.image);
+            Player = new Player(this, GameBoard.playerImage);
 
             Player.Position = new Position() { X = 5, Y = 4 };
             CurrentRoomPosition = new Position() { X = 0, Y = 0 };
@@ -105,8 +105,6 @@ namespace WpfApplication1
                 {
                     // Read the stream to a string, and write the string to the console.
                     String data = sr.ReadToEnd();
-
-                    
 
                     var rawlines = Regex.Split(data, "\r\n");
                     Debug.WriteLine(rawlines.Count() + " ligne(s) chargée(s) à partir du fichier.");
@@ -160,9 +158,13 @@ namespace WpfApplication1
                         for (int x = 0; x < blockCount; x++)
                         {
                             var room = CurrentLevel.Rooms[x, y];
+
+
                             Room nextRoom = null;
 
                             if (room == null) continue;
+
+
 
                             // check si room à gauche
                             if (x > 0)
@@ -225,6 +227,9 @@ namespace WpfApplication1
 
                         }
                     }
+
+                    
+
                 }
             }
             catch (Exception e)
@@ -234,9 +239,10 @@ namespace WpfApplication1
 
         }
 
-        public void DrawCurrentRoom()
+        public void RenderCurrentRoom()
         {
             if (GetCurrentRoom() == null) return;
+            GameBoard.mobImage.Visibility = Visibility.Hidden;
 
             for (int x = 0; x < MainGrid.ColumnDefinitions.Count; x++)
             {
@@ -251,6 +257,18 @@ namespace WpfApplication1
                     img.Width = 54;
                     img.Height = 54;
                     MainGrid.Children.Add(img);
+
+                    Mob mob = GetCurrentRoom().RoomBlocks[x, y].Mob;
+                    if ( mob != null)
+                    {
+                        BitmapImage mobBitmap = new BitmapImage(mob.Sprite);
+                        GameBoard.mobImage.Source = mobBitmap;
+                        GameBoard.mobImage.Visibility = Visibility.Visible;
+
+                        Grid.SetColumn(GameBoard.mobImage, mob.Position.X);
+                        Grid.SetRow(GameBoard.mobImage, mob.Position.Y);
+                        Canvas.SetZIndex(GameBoard.mobImage, 1);
+                    }
 
                 }
             }
@@ -276,8 +294,14 @@ namespace WpfApplication1
                     // replace le perso
                     Player.Move(5, 4);
                     // affiche la room en cours
-                    DrawCurrentRoom();
+                    RenderCurrentRoom();
                 }
+
+            }
+
+            if (block.Mob != null)
+            {
+                MessageBox.Show("baston !");
 
             }
 
@@ -318,22 +342,25 @@ namespace WpfApplication1
                 mainMenu.Visibility = Visibility.Hidden;
         }
 
-
+
+
         public bool IsGameBoardVisible { get; set; }
 
         public void ShowBoardGame()
         {
             HideMainMenu();
             GameBoardUserControl gameBoard = (GameBoardUserControl)RootCanvas.Children.Cast<FrameworkElement>().FirstOrDefault(o => o.Name == "GameBoard");
-            GameEngine.GetInstance().DrawCurrentRoom();
-            gameBoard.Visibility = Visibility.Visible;
+            GameEngine.GetInstance().RenderCurrentRoom();
+            gameBoard.Visibility = Visibility.Visible;
+
             IsGameBoardVisible = true;
         }
 
         public void HideBoardGame()
         {
             GameBoardUserControl gameBoard = (GameBoardUserControl)RootCanvas.Children.Cast<FrameworkElement>().FirstOrDefault(o => o.Name == "GameBoard");
-            gameBoard.Visibility = Visibility.Hidden;
+            gameBoard.Visibility = Visibility.Hidden;
+
             IsGameBoardVisible = false;
         }
 
