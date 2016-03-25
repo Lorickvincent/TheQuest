@@ -56,7 +56,7 @@ namespace WpfApplication1
 
         public void InitMediaPlayer()
         {
-            var absolutePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\Music\Zelda.mp3");
+            var absolutePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\Music\song.mp3");
             var filePath = Path.GetFullPath((new Uri(absolutePath)).LocalPath);
             MediaPlayer.URL = filePath;
             MediaPlayer.controls.play();
