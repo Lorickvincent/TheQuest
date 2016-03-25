@@ -318,20 +318,23 @@ namespace WpfApplication1
                 mainMenu.Visibility = Visibility.Hidden;
         }
 
+
+        public bool IsGameBoardVisible { get; set; }
 
         public void ShowBoardGame()
         {
             HideMainMenu();
             GameBoardUserControl gameBoard = (GameBoardUserControl)RootCanvas.Children.Cast<FrameworkElement>().FirstOrDefault(o => o.Name == "GameBoard");
             GameEngine.GetInstance().DrawCurrentRoom();
-            gameBoard.Visibility = Visibility.Visible;
+            gameBoard.Visibility = Visibility.Visible;
+            IsGameBoardVisible = true;
         }
 
         public void HideBoardGame()
         {
             GameBoardUserControl gameBoard = (GameBoardUserControl)RootCanvas.Children.Cast<FrameworkElement>().FirstOrDefault(o => o.Name == "GameBoard");
-            if (gameBoard != null)
-                gameBoard.Visibility = Visibility.Hidden;
+            gameBoard.Visibility = Visibility.Hidden;
+            IsGameBoardVisible = false;
         }
 
 

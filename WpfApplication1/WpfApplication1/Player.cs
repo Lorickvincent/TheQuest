@@ -51,7 +51,7 @@ namespace WpfApplication1
 
         public void MoveDown()
         {
-            if (Grid.GetRow(Sprite) < _gameEngine.MainGrid.RowDefinitions.Count - 1)
+            if (Grid.GetRow(Sprite) < _gameEngine.MainGrid.RowDefinitions.Count - 1 && _gameEngine.IsGameBoardVisible)
                 if (_gameEngine.GetCurrentRoom().RoomBlocks[Grid.GetColumn(Sprite), Grid.GetRow(Sprite) + 1].Type != RoomBlockTypes.Wall)
                 {
                     Move(Position.X, ++Position.Y);
@@ -63,7 +63,7 @@ namespace WpfApplication1
 
         public void MoveUp()
         {
-            if (Grid.GetRow(Sprite) > 0)
+            if (Grid.GetRow(Sprite) > 0 && _gameEngine.IsGameBoardVisible)
                 if (_gameEngine.GetCurrentRoom().RoomBlocks[Grid.GetColumn(Sprite), Grid.GetRow(Sprite) - 1].Type != RoomBlockTypes.Wall)
                 {
                     Move(Position.X, --Position.Y);
@@ -75,7 +75,7 @@ namespace WpfApplication1
 
         public void MoveLeft()
         {
-            if (Grid.GetColumn(Sprite) > 0)
+            if (Grid.GetColumn(Sprite) > 0 && _gameEngine.IsGameBoardVisible)
                 if (_gameEngine.GetCurrentRoom().RoomBlocks[Grid.GetColumn(Sprite) - 1, Grid.GetRow(Sprite)].Type != RoomBlockTypes.Wall)
                 {
                     Move(--Position.X, Position.Y);
@@ -87,7 +87,7 @@ namespace WpfApplication1
 
         public void MoveRight()
         {
-            if (Grid.GetColumn(Sprite) < _gameEngine.MainGrid.ColumnDefinitions.Count - 1)
+            if (Grid.GetColumn(Sprite) < _gameEngine.MainGrid.ColumnDefinitions.Count - 1 && _gameEngine.IsGameBoardVisible)
                 if (_gameEngine.GetCurrentRoom().RoomBlocks[Grid.GetColumn(Sprite) + 1, Grid.GetRow(Sprite)].Type != RoomBlockTypes.Wall)
                 {
                     Move(++Position.X, Position.Y);
