@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Media;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -46,7 +48,18 @@ namespace WpfApplication1
 
         public GameEngine()
         {
+            MediaPlayer = new WMPLib.WindowsMediaPlayer();
+            MediaPlayer.settings.setMode("loop", true);
+        }
 
+        public WMPLib.WindowsMediaPlayer MediaPlayer { get; set; }
+
+        public void InitMediaPlayer()
+        {
+            var absolutePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\Music\Zelda.mp3");
+            var filePath = Path.GetFullPath((new Uri(absolutePath)).LocalPath);
+            MediaPlayer.URL = filePath;
+            MediaPlayer.controls.play();
         }
 
         public static void Init(Canvas rootCanvas)
@@ -68,6 +81,8 @@ namespace WpfApplication1
             _gameEngine.RootCanvas.Children.Add(gameBoard);
             Canvas.SetLeft(gameBoard, 0);
             Canvas.SetTop(gameBoard, 0);
+
+            _gameEngine.InitMediaPlayer();
 
         }
 
