@@ -15,17 +15,17 @@ namespace WpfApplication1
         {
             PlayerSprites = new Dictionary<PlayerSpriteTypes, Uri>();
 
-            PlayerSprites.Add(PlayerSpriteTypes.Front, new Uri("/WpfApplication1;Component/Images/3428489.png", UriKind.Relative));
-            PlayerSprites.Add(PlayerSpriteTypes.Back, new Uri("/WpfApplication1;Component/Images/Hero.png", UriKind.Relative));
-            PlayerSprites.Add(PlayerSpriteTypes.Left, new Uri("/WpfApplication1;Component/Images/Hero.png", UriKind.Relative));
-            PlayerSprites.Add(PlayerSpriteTypes.Right, new Uri("/WpfApplication1;Component/Images/Hero.png", UriKind.Relative));
+            PlayerSprites.Add(PlayerSpriteTypes.Front, new Uri("/WpfApplication1;Component/Images/PlayerFront.png", UriKind.Relative));
+            PlayerSprites.Add(PlayerSpriteTypes.Back, new Uri("/WpfApplication1;Component/Images/PlayerBack.png", UriKind.Relative));
+            PlayerSprites.Add(PlayerSpriteTypes.Left, new Uri("/WpfApplication1;Component/Images/PlayerLeft.png", UriKind.Relative));
+            PlayerSprites.Add(PlayerSpriteTypes.Right, new Uri("/WpfApplication1;Component/Images/PlayerRight.png", UriKind.Relative));
 
             GroundSprites = new Dictionary<GroundSpriteTypes, Uri>();
 
             GroundSprites.Add(GroundSpriteTypes.Rock, new Uri("/WpfApplication1;Component/Images/Background/SolDonjon.jpg", UriKind.Relative));
             GroundSprites.Add(GroundSpriteTypes.Grass, new Uri("/WpfApplication1;Component/Images/Background/Grass.jpg", UriKind.Relative));
-
-
+            GroundSprites.Add(GroundSpriteTypes.Tiles2, new Uri("/WpfApplication1;Component/Images/Background/CarrellageBB.jpg", UriKind.Relative));
+            GroundSprites.Add(GroundSpriteTypes.Tiles1, new Uri("/WpfApplication1;Component/Images/Background/CarrellageNB.jpg", UriKind.Relative));
 
 
         }
@@ -42,8 +42,10 @@ namespace WpfApplication1
 
     public enum GroundSpriteTypes
     {
-        Grass = 0,
-        Rock = 1
+        Grass,
+        Rock,
+        Tiles1,
+        Tiles2,
     }
 
 

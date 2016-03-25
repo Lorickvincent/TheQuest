@@ -162,6 +162,16 @@
   <ItemGroup>
     <Resource Include="Images\Background\WallDoorOpen.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PlayerBack.png" />
+    <Resource Include="Images\PlayerFront.png" />
+    <Resource Include="Images\PlayerLeft.png" />
+    <Resource Include="Images\PlayerRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background\CarrellageNB.jpg" />
+    <Resource Include="Images\Background\CarrellageBB.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
