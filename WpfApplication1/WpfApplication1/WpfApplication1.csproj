@@ -164,10 +164,10 @@
     <Resource Include="Images\Background\WallDoorOpen.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\PlayerBack.png" />
-    <Resource Include="Images\PlayerFront.png" />
-    <Resource Include="Images\PlayerLeft.png" />
-    <Resource Include="Images\PlayerRight.png" />
+    <Resource Include="Images\Player\PlayerBack.png" />
+    <Resource Include="Images\Player\PlayerFront.png" />
+    <Resource Include="Images\Player\PlayerLeft.png" />
+    <Resource Include="Images\Player\PlayerRight.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Background\CarrellageNB.jpg" />
@@ -186,6 +186,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Images\Mobs\OrcFront.png" />
+    <Resource Include="Images\Mobs\Orc2Front.png" />
+    <Resource Include="Images\Mobs\SkeletFront.png" />
     <Content Include="Music\song.mp3" />
     <Content Include="Music\Zelda.mp3" />
   </ItemGroup>

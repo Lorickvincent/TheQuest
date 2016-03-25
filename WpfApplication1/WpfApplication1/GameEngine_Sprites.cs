@@ -18,10 +18,10 @@ namespace WpfApplication1
         {
             PlayerSprites = new Dictionary<PlayerSpriteTypes, Uri>();
 
-            PlayerSprites.Add(PlayerSpriteTypes.Front, new Uri("/WpfApplication1;Component/Images/PlayerFront.png", UriKind.Relative));
-            PlayerSprites.Add(PlayerSpriteTypes.Back, new Uri("/WpfApplication1;Component/Images/PlayerBack.png", UriKind.Relative));
-            PlayerSprites.Add(PlayerSpriteTypes.Left, new Uri("/WpfApplication1;Component/Images/PlayerLeft.png", UriKind.Relative));
-            PlayerSprites.Add(PlayerSpriteTypes.Right, new Uri("/WpfApplication1;Component/Images/PlayerRight.png", UriKind.Relative));
+            PlayerSprites.Add(PlayerSpriteTypes.Front, new Uri("/WpfApplication1;Component/Images/Player/PlayerFront.png", UriKind.Relative));
+            PlayerSprites.Add(PlayerSpriteTypes.Back, new Uri("/WpfApplication1;Component/Images/Player/PlayerBack.png", UriKind.Relative));
+            PlayerSprites.Add(PlayerSpriteTypes.Left, new Uri("/WpfApplication1;Component/Images/Player/PlayerLeft.png", UriKind.Relative));
+            PlayerSprites.Add(PlayerSpriteTypes.Right, new Uri("/WpfApplication1;Component/Images/Player/PlayerRight.png", UriKind.Relative));
 
             GroundSprites = new Dictionary<GroundSpriteTypes, Uri>();
 
@@ -32,10 +32,9 @@ namespace WpfApplication1
 
             MobSprites = new Dictionary<MobSpriteTypes, Uri>();
 
-            MobSprites.Add(MobSpriteTypes.Mob1, new Uri("/WpfApplication1;Component/Images/Hero.png", UriKind.Relative));
-            MobSprites.Add(MobSpriteTypes.Mob2, new Uri("/WpfApplication1;Component/Images/Hero.png", UriKind.Relative));
-            MobSprites.Add(MobSpriteTypes.Boss1, new Uri("/WpfApplication1;Component/Images/Hero.png", UriKind.Relative));
-            MobSprites.Add(MobSpriteTypes.Boss2, new Uri("/WpfApplication1;Component/Images/Hero.png", UriKind.Relative));
+            MobSprites.Add(MobSpriteTypes.Orc1, new Uri("/WpfApplication1;Component/Images/Mobs/OrcFront.png", UriKind.Relative));
+            MobSprites.Add(MobSpriteTypes.Orc2, new Uri("/WpfApplication1;Component/Images/Mobs/Orc2Front.png", UriKind.Relative));
+            MobSprites.Add(MobSpriteTypes.Skelet1, new Uri("/WpfApplication1;Component/Images/Mobs/SkeletFront.png", UriKind.Relative));
 
 
         }
@@ -44,10 +43,10 @@ namespace WpfApplication1
 
     public enum MobSpriteTypes
     {
-        Mob1,
-        Mob2,
-        Boss1,
-        Boss2
+        Orc1,
+        Orc2,
+        Skelet1,
+        
 
     }
 
